@@ -1,14 +1,14 @@
 #include <iostream>
 using namespace std;
 
-void QuickSort(int a[15], int first, int last){
+void QuickSort(int a[10], int first, int last){
     int i,j,pivot,temp;
     if(first<last){
         pivot=first;
         i=first;
         j=last;
     while(i<j){
-        while(a[i]<=a[pivot]&&i<last){
+        while(a[i]<=a[pivot]){
         i++; }
         while(a[j]>a[pivot]){
             j--;
