@@ -46,7 +46,6 @@ int main() {
     cin>>choice;
     switch(choice){
         case 1:{
-        binarysearch(arr, 0, n-1, key);
         int index = binarysearch(arr, 0, n-1, key);
         if(index==-1){
             cout<<"Element not found!";
@@ -54,7 +53,6 @@ int main() {
         break;
         }
         case 2:{
-        linearsearch(arr, key, 0, n);
         int index = linearsearch(arr, key, 0, n);
         if(index==-1){
             cout<<"Element not found!";
