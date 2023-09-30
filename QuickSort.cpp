@@ -35,6 +35,11 @@ void printArray(int *a, int n){
 
 int main() {
     int n=10;
+    /*int arr[n];
+    cout<<"Enter the elements of the array:";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }*/
     int a[]={1, 5, 3, 13, 7, 3, 2, 15, 45, 20};
     QuickSort(a,0,n-1);
     printArray(a, n);
