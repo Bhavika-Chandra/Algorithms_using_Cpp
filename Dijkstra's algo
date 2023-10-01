@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+const int INF = INT_MAX;
+int minDistance(vector<int>& dist, vector<bool>& visited, int nodes) {
+    int minDist = INF, minIndex;
+    for (int v = 0; v < nodes; ++v) {
+        if (!visited[v] && dist[v] <= minDist) {
+            minDist = dist[v];
+            minIndex = v;
+        }
+    }
+    return minIndex;
+}
+void printShortestDistances(vector<int>& dist, int nodes, int startNode) {
+    cout << "Shortest distances from Node " << startNode << " to other nodes:" << endl;
+    for (int i = 0; i < nodes; ++i) {
+        cout << "Node " << i << ": " << dist[i] << endl;
+    }
+}
+void dijkstra(vector<vector<int>>& graph, int nodes, int startNode) {
+    vector<int> dist(nodes, INF); // Initialize distances to infinity
+    vector<bool> visited(nodes, false); // Mark all nodes as unvisited
+
+    dist[startNode] = 0; // Distance to start node is 0
+
+    for (int count = 0; count < nodes - 1; ++count) {
+        int u = minDistance(dist, visited, nodes);
+        visited[u] = true;
+        for (int v = 0; v < nodes; ++v) {
+            if (!visited[v] && graph[u][v] && dist[u] != INF &&
+                dist[u] + graph[u][v] < dist[v]) {
+                dist[v] = dist[u] + graph[u][v];
+            }
+        }
+    }
+    printShortestDistances(dist, nodes, startNode);
+}
+int main() {
+    int nodes;
+    cout << "Enter the number of nodes: ";
+    cin >> nodes;
+    vector<vector<int>> graph(nodes, vector<int>(nodes));
+    cout << "Enter the adjacency matrix:" << endl;
+    for (int i = 0; i < nodes; ++i) {
+        for (int j = 0; j < nodes; ++j) {
+            cin >> graph[i][j];
+        }
+    }
+    int startNode;
+    cout << "Enter the start node: ";
+    cin >> startNode;
+    dijkstra(graph, nodes, startNode);
+
+    return 0;
+}
