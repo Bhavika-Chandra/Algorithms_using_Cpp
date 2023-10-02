@@ -17,8 +17,11 @@ int minDistance(vector<int>& dist,vector<bool>& visited, int nodes){
 void Dijkstraalgo{
     
 }
-void printShortestDist{
-    
+void printShortestDist(vector<int>& dist, int nodes, int startNode){
+    cout<<"Shortest distance from"<<startNode<<"to other nodes:";
+    for(int i=0;i<nodes;++i){
+        cout<<"Node"<<i<<":"<<dist[i];
+    }
 }
 int main() {
 
