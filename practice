@@ -1,0 +1,26 @@
+#include <iostream>
+#include<vector>
+#include<climits>
+using namespace std;
+
+const int INF=INT_MAX;
+int minDistance(vector<int>& dist,vector<bool>& visited, int nodes){
+    int minIndex, minDist=INF;
+    for(int v=0, v<nodes, ++v){
+        if(!visited[v]&&dist[v]<=minDist){
+            minDist=dist[v];
+            minIndex=v;
+        }
+    }
+    return minIndex;
+} 
+void Dijkstraalgo{
+    
+}
+void printShortestDist{
+    
+}
+int main() {
+
+    return 0;
+}
