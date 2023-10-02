@@ -14,16 +14,43 @@ int minDistance(vector<int>& dist,vector<bool>& visited, int nodes){
     }
     return minIndex;
 } 
-void Dijkstraalgo{
-    
-}
 void printShortestDist(vector<int>& dist, int nodes, int startNode){
     cout<<"Shortest distance from"<<startNode<<"to other nodes:";
     for(int i=0;i<nodes;++i){
         cout<<"Node"<<i<<":"<<dist[i];
     }
 }
-int main() {
+void Dijkstraalgo(vector<vector<int>>& graph, int nodes, int startNode){
+   vector<int> dist(nodes,INF);
+   vector<bool> visited(nodes, false);
+   dist[startNode]=0;
+   for(int count=0;count<nodes-1;++count){
+       int u=minDistance(dist, visited, nodes);
+       visited[u]=true;
+       for(int v=0;v<nodes;++v){
+           if(!visited[v]&&graph[u][v]&&dist[u]<INF && 
+           dist[u]+graph[u][v]<dist[v]){
+               dist[v]=dist[u]+graph[u][v];
+           }
+       }
+   }
+    printShortestDist(dist, nodes, startNode);
+}
 
+int main() {
+    int nodes;
+    cout<<"Enter the number of nodes:";
+    cin>>nodes;
+    vector<vector<int>> graph(nodes, vector<int>(nodes));
+    cout<<"Enter the adjacency matrix:";
+    for(int i=0;i<nodes;++i){
+        for(int j=0;j<nodes;++j){
+            cin>>graph[i][j];
+        }
+    }
+    int startNode;
+    cout<<"Enter the start node:";
+    cin>>startNode;
+    Dijkstraalgo(graph,nodes,startNode);
     return 0;
 }
